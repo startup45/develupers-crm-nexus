@@ -34,8 +34,8 @@ const Navbar: React.FC<NavbarProps> = ({ toggleSidebar }) => {
     <header className="sticky top-0 z-30 h-16 border-b border-white/5 bg-develupers-dark-bg/80 backdrop-blur-sm">
       <div className="flex h-full items-center justify-between px-4 md:px-6">
         <div className="flex items-center gap-2">
-          <SidebarTrigger asChild>
-            <Button variant="ghost" size="icon" className="md:hidden">
+          <SidebarTrigger>
+            <Button variant="ghost" size="icon" className="md:hidden" onClick={toggleSidebar}>
               <Menu className="h-5 w-5" />
               <span className="sr-only">Toggle sidebar</span>
             </Button>
