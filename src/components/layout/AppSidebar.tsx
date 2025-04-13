@@ -1,0 +1,100 @@
+
+import React from 'react';
+import { 
+  Sidebar, 
+  SidebarContent, 
+  SidebarGroup, 
+  SidebarGroupContent, 
+  SidebarGroupLabel, 
+  SidebarMenu, 
+  SidebarMenuButton, 
+  SidebarMenuItem 
+} from '@/components/ui/sidebar';
+import { 
+  LayoutDashboard, 
+  GraduationCap, 
+  Briefcase, 
+  CheckSquare, 
+  Users, 
+  Calendar, 
+  MessageSquare, 
+  Mail, 
+  Settings, 
+  LifeBuoy
+} from 'lucide-react';
+import { cn } from '@/lib/utils';
+
+interface AppSidebarProps {
+  open: boolean;
+}
+
+const AppSidebar: React.FC<AppSidebarProps> = ({ open }) => {
+  // Navigation menu items
+  const mainMenuItems = [
+    { title: 'Dashboard', icon: LayoutDashboard, url: '/' },
+    { title: 'Internships', icon: GraduationCap, url: '/internships' },
+    { title: 'Projects', icon: Briefcase, url: '/projects' },
+    { title: 'Tasks', icon: CheckSquare, url: '/tasks' },
+    { title: 'Clients', icon: Users, url: '/clients' },
+    { title: 'Calendar', icon: Calendar, url: '/calendar' },
+    { title: 'Chat', icon: MessageSquare, url: '/chat' },
+    { title: 'Gmail', icon: Mail, url: '/gmail' },
+  ];
+
+  const secondaryMenuItems = [
+    { title: 'Settings', icon: Settings, url: '/settings' },
+    { title: 'Help & Support', icon: LifeBuoy, url: '/support' },
+  ];
+
+  return (
+    <Sidebar>
+      <div className="h-16 flex items-center justify-center p-4 border-b border-white/5">
+        <div className="flex items-center space-x-2">
+          <div className="w-8 h-8 rounded-md bg-gradient-to-br from-develupers-accent-indigo to-develupers-accent-purple flex items-center justify-center">
+            <span className="text-white font-bold">D</span>
+          </div>
+          <h1 className="text-xl font-bold text-white">Develupers</h1>
+        </div>
+      </div>
+      <SidebarContent>
+        <SidebarGroup>
+          <SidebarGroupLabel>Menu</SidebarGroupLabel>
+          <SidebarGroupContent>
+            <SidebarMenu>
+              {mainMenuItems.map((item) => (
+                <SidebarMenuItem key={item.title}>
+                  <SidebarMenuButton asChild>
+                    <a href={item.url} className="flex items-center gap-3 px-3 py-2 rounded-md hover:bg-white/5 transition-colors">
+                      <item.icon className="w-5 h-5" />
+                      <span>{item.title}</span>
+                    </a>
+                  </SidebarMenuButton>
+                </SidebarMenuItem>
+              ))}
+            </SidebarMenu>
+          </SidebarGroupContent>
+        </SidebarGroup>
+
+        <SidebarGroup className="mt-6">
+          <SidebarGroupLabel>Other</SidebarGroupLabel>
+          <SidebarGroupContent>
+            <SidebarMenu>
+              {secondaryMenuItems.map((item) => (
+                <SidebarMenuItem key={item.title}>
+                  <SidebarMenuButton asChild>
+                    <a href={item.url} className="flex items-center gap-3 px-3 py-2 rounded-md hover:bg-white/5 transition-colors">
+                      <item.icon className="w-5 h-5" />
+                      <span>{item.title}</span>
+                    </a>
+                  </SidebarMenuButton>
+                </SidebarMenuItem>
+              ))}
+            </SidebarMenu>
+          </SidebarGroupContent>
+        </SidebarGroup>
+      </SidebarContent>
+    </Sidebar>
+  );
+};
+
+export default AppSidebar;
