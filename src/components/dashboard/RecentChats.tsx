@@ -27,7 +27,7 @@ const RecentChats: React.FC = () => {
         avatar: '',
         initials: 'ME',
       },
-      message: 'Yes, I'm reviewing them now. I have a few questions though.',
+      message: "Yes, I'm reviewing them now. I have a few questions though.",  // Note the use of double quotes
       time: '11:32 AM',
       isOwn: true,
     },
