@@ -1,6 +1,6 @@
 
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 import { 
   Sidebar, 
   SidebarContent, 
@@ -37,6 +37,7 @@ interface AppSidebarProps {
 
 const AppSidebar: React.FC<AppSidebarProps> = ({ open }) => {
   const { theme, toggleTheme } = useTheme();
+  const location = useLocation();
 
   const mainMenuItems = [
     { title: 'Dashboard', icon: LayoutDashboard, url: '/' },
@@ -56,6 +57,10 @@ const AppSidebar: React.FC<AppSidebarProps> = ({ open }) => {
     { title: 'Help & Support', icon: LifeBuoy, url: '/support' },
   ];
 
+  const isActiveRoute = (url: string) => {
+    return location.pathname === url;
+  };
+
   return (
     <Sidebar>
       <div className="h-16 flex items-center justify-center p-4 border-b border-white/5">
@@ -73,7 +78,7 @@ const AppSidebar: React.FC<AppSidebarProps> = ({ open }) => {
             <SidebarMenu>
               {mainMenuItems.map((item) => (
                 <SidebarMenuItem key={item.title}>
-                  <SidebarMenuButton asChild>
+                  <SidebarMenuButton asChild isActive={isActiveRoute(item.url)}>
                     <Link to={item.url} className="flex items-center gap-3 px-3 py-2 rounded-md hover:bg-white/5 transition-colors">
                       <item.icon className="w-5 h-5" />
                       <span>{item.title}</span>
@@ -91,7 +96,7 @@ const AppSidebar: React.FC<AppSidebarProps> = ({ open }) => {
             <SidebarMenu>
               {secondaryMenuItems.map((item) => (
                 <SidebarMenuItem key={item.title}>
-                  <SidebarMenuButton asChild>
+                  <SidebarMenuButton asChild isActive={isActiveRoute(item.url)}>
                     <Link to={item.url} className="flex items-center gap-3 px-3 py-2 rounded-md hover:bg-white/5 transition-colors">
                       <item.icon className="w-5 h-5" />
                       <span>{item.title}</span>
@@ -104,13 +109,14 @@ const AppSidebar: React.FC<AppSidebarProps> = ({ open }) => {
                   className="w-full flex items-center gap-3 px-3 py-2 rounded-md hover:bg-white/5 transition-colors justify-start"
                   pressed={theme === 'dark'}
                   onPressedChange={toggleTheme}
+                  aria-label="Toggle theme"
                 >
                   {theme === 'dark' ? (
                     <Moon className="w-5 h-5" />
                   ) : (
                     <Sun className="w-5 h-5" />
                   )}
-                  <span>Theme</span>
+                  <span>Theme: {theme === 'dark' ? 'Dark' : 'Light'}</span>
                 </Toggle>
               </SidebarMenuItem>
             </SidebarMenu>

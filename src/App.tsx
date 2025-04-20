@@ -14,6 +14,8 @@ import Projects from "./pages/Projects";
 import Calendar from "./pages/Calendar";
 import Chat from "./pages/Chat";
 import Gmail from "./pages/Gmail";
+import Settings from "./pages/Settings";
+import Support from "./pages/Support";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
@@ -35,6 +37,8 @@ const App = () => (
           <Route path="/calendar" element={<Calendar />} />
           <Route path="/chat" element={<Chat />} />
           <Route path="/gmail" element={<Gmail />} />
+          <Route path="/settings" element={<Settings />} />
+          <Route path="/support" element={<Support />} />
           <Route path="*" element={<NotFound />} />
         </Routes>
       </BrowserRouter>
