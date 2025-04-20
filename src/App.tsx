@@ -9,6 +9,11 @@ import Tasks from "./pages/Tasks";
 import Leads from "./pages/Leads";
 import Documents from "./pages/Documents";
 import Finance from "./pages/Finance";
+import Internships from "./pages/Internships";
+import Projects from "./pages/Projects";
+import Calendar from "./pages/Calendar";
+import Chat from "./pages/Chat";
+import Gmail from "./pages/Gmail";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
@@ -25,6 +30,11 @@ const App = () => (
           <Route path="/leads" element={<Leads />} />
           <Route path="/documents" element={<Documents />} />
           <Route path="/finance" element={<Finance />} />
+          <Route path="/internships" element={<Internships />} />
+          <Route path="/projects" element={<Projects />} />
+          <Route path="/calendar" element={<Calendar />} />
+          <Route path="/chat" element={<Chat />} />
+          <Route path="/gmail" element={<Gmail />} />
           <Route path="*" element={<NotFound />} />
         </Routes>
       </BrowserRouter>
