@@ -1,5 +1,6 @@
 
 import React from 'react';
+import { Link } from 'react-router-dom';
 import { 
   Sidebar, 
   SidebarContent, 
@@ -20,22 +21,31 @@ import {
   MessageSquare, 
   Mail, 
   Settings, 
-  LifeBuoy
+  LifeBuoy,
+  FileText,
+  DollarSign,
+  Sun,
+  Moon
 } from 'lucide-react';
 import { cn } from '@/lib/utils';
+import { Toggle } from '@/components/ui/toggle';
+import { useTheme } from '@/hooks/use-theme';
 
 interface AppSidebarProps {
   open: boolean;
 }
 
 const AppSidebar: React.FC<AppSidebarProps> = ({ open }) => {
-  // Navigation menu items
+  const { theme, toggleTheme } = useTheme();
+
   const mainMenuItems = [
     { title: 'Dashboard', icon: LayoutDashboard, url: '/' },
     { title: 'Internships', icon: GraduationCap, url: '/internships' },
     { title: 'Projects', icon: Briefcase, url: '/projects' },
     { title: 'Tasks', icon: CheckSquare, url: '/tasks' },
-    { title: 'Clients', icon: Users, url: '/clients' },
+    { title: 'Leads', icon: Users, url: '/leads' },
+    { title: 'Documents', icon: FileText, url: '/documents' },
+    { title: 'Finance', icon: DollarSign, url: '/finance' },
     { title: 'Calendar', icon: Calendar, url: '/calendar' },
     { title: 'Chat', icon: MessageSquare, url: '/chat' },
     { title: 'Gmail', icon: Mail, url: '/gmail' },
@@ -64,10 +74,10 @@ const AppSidebar: React.FC<AppSidebarProps> = ({ open }) => {
               {mainMenuItems.map((item) => (
                 <SidebarMenuItem key={item.title}>
                   <SidebarMenuButton asChild>
-                    <a href={item.url} className="flex items-center gap-3 px-3 py-2 rounded-md hover:bg-white/5 transition-colors">
+                    <Link to={item.url} className="flex items-center gap-3 px-3 py-2 rounded-md hover:bg-white/5 transition-colors">
                       <item.icon className="w-5 h-5" />
                       <span>{item.title}</span>
-                    </a>
+                    </Link>
                   </SidebarMenuButton>
                 </SidebarMenuItem>
               ))}
@@ -82,13 +92,27 @@ const AppSidebar: React.FC<AppSidebarProps> = ({ open }) => {
               {secondaryMenuItems.map((item) => (
                 <SidebarMenuItem key={item.title}>
                   <SidebarMenuButton asChild>
-                    <a href={item.url} className="flex items-center gap-3 px-3 py-2 rounded-md hover:bg-white/5 transition-colors">
+                    <Link to={item.url} className="flex items-center gap-3 px-3 py-2 rounded-md hover:bg-white/5 transition-colors">
                       <item.icon className="w-5 h-5" />
                       <span>{item.title}</span>
-                    </a>
+                    </Link>
                   </SidebarMenuButton>
                 </SidebarMenuItem>
               ))}
+              <SidebarMenuItem>
+                <Toggle 
+                  className="w-full flex items-center gap-3 px-3 py-2 rounded-md hover:bg-white/5 transition-colors justify-start"
+                  pressed={theme === 'dark'}
+                  onPressedChange={toggleTheme}
+                >
+                  {theme === 'dark' ? (
+                    <Moon className="w-5 h-5" />
+                  ) : (
+                    <Sun className="w-5 h-5" />
+                  )}
+                  <span>Theme</span>
+                </Toggle>
+              </SidebarMenuItem>
             </SidebarMenu>
           </SidebarGroupContent>
         </SidebarGroup>
