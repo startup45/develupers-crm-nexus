@@ -90,3 +90,8 @@
     @apply absolute top-1 right-1 w-2 h-2 bg-develupers-error rounded-full;
   }
 }
+
+/* Dark/light theme transition */
+.dark body, .light body {
+  transition: background-color 0.3s ease-in-out, color 0.3s ease-in-out;
+}

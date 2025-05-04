@@ -15,7 +15,7 @@ const AppLayout: React.FC<AppLayoutProps> = ({ children }) => {
 
   return (
     <SidebarProvider>
-      <div className="min-h-screen flex w-full bg-develupers-dark-bg text-white">
+      <div className="min-h-screen flex w-full bg-background text-foreground">
         <AppSidebar open={sidebarOpen} />
         <div className="flex-1 flex flex-col min-h-screen">
           <Navbar toggleSidebar={toggleSidebar} />
