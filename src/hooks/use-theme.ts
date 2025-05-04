@@ -27,11 +27,9 @@ export const useTheme = () => {
     if (theme === 'dark') {
       root.classList.add('dark');
       root.classList.remove('light');
-      document.body.style.backgroundColor = 'hsl(240, 10%, 3.9%)'; // Dark background
     } else {
       root.classList.add('light');
       root.classList.remove('dark');
-      document.body.style.backgroundColor = 'hsl(0, 0%, 100%)'; // Light background
     }
   }, [theme]);
 

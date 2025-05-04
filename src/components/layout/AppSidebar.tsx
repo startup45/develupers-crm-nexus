@@ -64,7 +64,7 @@ const AppSidebar: React.FC<AppSidebarProps> = ({ open }) => {
 
   return (
     <Sidebar>
-      <div className="h-16 flex items-center justify-center p-4 border-b border-white/5">
+      <div className="h-16 flex items-center justify-center p-4 border-b sidebar-header">
         <div className="flex items-center space-x-2">
           <div className="w-8 h-8 rounded-md bg-gradient-to-br from-develupers-accent-indigo to-develupers-accent-purple flex items-center justify-center">
             <span className="text-white font-bold">D</span>

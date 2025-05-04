@@ -95,3 +95,21 @@
 .dark body, .light body {
   transition: background-color 0.3s ease-in-out, color 0.3s ease-in-out;
 }
+
+/* Theme-specific navbar styles */
+.dark .navbar-bg {
+  @apply bg-develupers-dark-bg/80 backdrop-blur-sm border-white/5;
+}
+
+.light .navbar-bg {
+  @apply bg-white/80 backdrop-blur-sm border-slate-200;
+}
+
+/* Theme-specific sidebar styles */
+.dark .sidebar-header {
+  @apply border-white/5;
+}
+
+.light .sidebar-header {
+  @apply border-slate-200;
+}

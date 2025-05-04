@@ -31,7 +31,7 @@ const Navbar: React.FC<NavbarProps> = ({ toggleSidebar }) => {
   const [notificationsOpen, setNotificationsOpen] = useState(false);
   
   return (
-    <header className="sticky top-0 z-30 h-16 border-b border-white/5 bg-develupers-dark-bg/80 backdrop-blur-sm">
+    <header className="sticky top-0 z-30 h-16 border-b navbar-bg">
       <div className="flex h-full items-center justify-between px-4 md:px-6">
         <div className="flex items-center gap-2">
           <SidebarTrigger>
